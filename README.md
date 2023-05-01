@@ -14,3 +14,6 @@ mkdir ~/.config/sxhkd && mkdir ~/.config/bspwm/ && mkdir ~/.config/polybar/ && m
 cp sxhkdrc ~/.config/sxhkd/ && cp bspwmrc ~/.config/bspwm/ && cp .xinitrc ~ && cp config.ini ~/.config/polybar/ && cp dunstrc ~/.config/dunst/
 ```
 
+Edit wallpaper paths(s) (`feh` command in `bspwmrc`) and monitor count related lines.
+
+Done!
