@@ -15,8 +15,10 @@ super + Escape
 
 # screenshot
 alt + shift + s
-  spectacle --region
+	spectacle --region
 
+# lockscreen
+	XSECURELOCK_COMPOSITE_OBSCURER=0 xsecurelock
 
 ## Function keys ##
 
@@ -26,11 +28,11 @@ XF86Audio{Play,Stop,Prev,Next}
 
 # Change volume
 XF86Audio{RaiseVolume,LowerVolume}
-  pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
+	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 
 # Mute
 XF86AudioMute
-  pactl set-sink-mute @DEFAULT_SINK@ toggle
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Screen brightness
 XF86MonBrightness{Down,Up}

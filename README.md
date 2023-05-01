@@ -1,11 +1,17 @@
 Install required packages
 
 ```bash
-pacman -Syyu bspwm sxhkd picom feh polybar alacritty rofi spectacle brightnessctl dunst
+pacman -Syyu bspwm sxhkd picom feh polybar alacritty rofi spectacle brightnessctl dunst xsecurelock
 ```
 
 (assume `pactl playerctl` installed?)
 
+
+On laptops
+
+```bash
+pacman -Syyu xfce4-power-manager
+```
 
 Install dots
 
