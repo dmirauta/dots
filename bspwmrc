@@ -8,6 +8,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # compositor
 picom &
 
+# notifications
+dunst &
+
 # wallpaper # order acording to `xrandr --listmonitors`
 feh --no-fehbg --bg-fill $HOME/Pictures/dual_1440p/cuts/6593144_right.jpg \
                          $HOME/Pictures/dual_1440p/cuts/6593144_left.jpg
