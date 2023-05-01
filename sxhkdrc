@@ -7,7 +7,7 @@ super + Return
 
 # program launcher
 super + @space 
-	rofi -show combi -combi-modes "drun,window,filebrowser" -modes combi
+	rofi -show combi -combi-modes "drun,window,filebrowser" -modes combi -monitor -1 # currently focused monitor
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -71,16 +71,20 @@ super + {_,shift + }c
 super + ctrl + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
+# focus the next monitor
+super + ctrl + alt {Left,Right}
+	bspc monitor -f {prev,next}
+
 # move focused window to the next workspace and then switch to that workspace
 super + ctrl + shift + {Left,Right}
     id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
 
 # preselect the direction
-super + ctrl + alt + {Left,Down,Up,Right}
+super + ctrl + shift + alt + {Left,Down,Up,Right}
 	bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused node
-super + ctrl + alt + space
+super + ctrl + shift + alt + space
 	bspc node -p cancel
 
 # expand a window by moving one of its side outward

@@ -8,14 +8,22 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # compositor
 picom &
 
-# wallpaper
-feh --no-fehbg --bg-fill ~/Pictures/nature/nature-3082832.jpg
+# wallpaper # order acording to `xrandr --listmonitors`
+feh --no-fehbg --bg-fill $HOME/Pictures/dual_1440p/cuts/6593144_right.jpg \
+                         $HOME/Pictures/dual_1440p/cuts/6593144_left.jpg
 
 # status bar
-polybar &
+polybar main &
+polybar secondary & # second monitor
 
 ## bspwm config
-bspc monitor -d I II III IV V VI VII VIII IX X
+
+## single monitor
+#bspc monitor -d I II III IV V VI VII VIII IX X
+
+## multi monitor
+bspc monitor DisplayPort-2 -d I II III IV V
+bspc monitor DisplayPort-1 -d VI VII VIII IX X
 
 bspc config border_width         2
 bspc config window_gap          10
