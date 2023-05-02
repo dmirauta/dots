@@ -18,6 +18,7 @@ alt + shift + s
 	spectacle --region
 
 # lockscreen
+super + l
 	XSECURELOCK_COMPOSITE_OBSCURER=0 xsecurelock
 
 ## Function keys ##
