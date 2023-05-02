@@ -9,6 +9,8 @@ DISPLAYS=("DisplayPort-2" "DisplayPort-1") # can leave empty () for single monit
 WORKSPACES=("I II III IV" "V VI VII VIII")
 N_MONITORS=2
 
+export INTERFACE_NAME=enp39s0
+
 #### 
 
 INSTALL="pacman -S"
