@@ -12,17 +12,13 @@ picom &
 dunst &
 
 # wallpaper # order acording to `xrandr --listmonitors`
-feh --no-fehbg --bg-fill /home/d/Pictures/dual_1440p/cuts/6593144_right.jpg /home/d/Pictures/dual_1440p/cuts/6593144_left.jpg
+feh --no-fehbg --bg-fill $WALLPAPERS
 
 # status bar
-polybar BAR0 &
-polybar BAR1 &
-
+$BARSENABLE
 
 ## bspwm config ##
-bspc monitor DisplayPort-2 -d I II III IV &
-bspc monitor DisplayPort-1 -d V VI VII VIII &
-
+$BSPCMON
 
 bspc config border_width         2
 bspc config window_gap          10
