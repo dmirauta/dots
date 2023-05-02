@@ -1,7 +1,7 @@
  
 Basic set of configs (mostly from corresponding defaults) for a bspwm based desktop environment.
 
-For a minimum change quickstart, edit the quickstart section in `auto.sh` to suit your monitor setup and use `./auto.sh generate` to generate configs. These can be installed with `./auto.sh update`. Dependencies can be grabbed (edit `INSTALL` variable if not using `pacman`) with the `./auto.sh deps` (and optionally `./auto.sh lapdeps` for laptop only components) command.
+For a minimum change quickstart, edit the quickstart section in `auto.sh` to suit your monitor setup and use `./auto.sh generate` to generate configs. These can be installed with `./auto.sh update`. Dependencies can be grabbed with the `./auto.sh deps` command (edit `INSTALL` variable if not using `pacman`).
 
 Todo:
 - option to quickly swap arrows and hjkl in keybinds for whichever is prefered as promminent?

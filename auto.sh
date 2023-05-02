@@ -44,16 +44,23 @@ case $1 in
 
   deps)
     echo "Installing main packages..."
-    $INSTALL xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi spectacle dunst xsecurelock
-    # $INSTALL pactl playerctl
-    ;;
+    $INSTALL xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi spectacle dunst xsecurelock playerctl
 
-  lapdeps)
-    echo "Installing laptop packages..."
-    $INSTALL xfce4-power-manager brightnessctl
+    AUDIOLIB=$(printf "libpulse\npipewire-pulse\nnone" | rofi -dmenu -p "Select audio library")
+    if [ $AUDIOLIB!="none" ] ; then 
+      $INSTALL $AUDIOLIB
+    fi
+
+    LAPTOP_PACKAGES="xfce4-power-manager brightnessctl"
+    INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install laptop packages? ($LAPTOP_PACKAGES)")
+    if [ $INSTLAPDEPS=="Yes" ] ; then 
+      $INSTALL $LAPTOP_PACKAGES
+    fi
+
     ;;
 
   update)
+
     echo "Installing dots..."
     for dotdirpair in "${DOTDIRS[@]}" ; do
         sourcefile="${dotdirpair%%:*}"
@@ -62,10 +69,11 @@ case $1 in
         mkdir -p $targetdir
         cp $sourcefile $targetdir
     done
+
     ;;
 
   *)
-    echo Issue \'generate\', \'deps\', \'lapdeps\' or \'update\' as argument.
+    echo Issue \'generate\', \'deps\' or \'update\' as argument.
     ;;
 
 esac
