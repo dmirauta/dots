@@ -42,6 +42,46 @@ XF86MonBrightness{Down,Up}
 
 ## bspwm hotkeys ##
 
+#### Begin Directional (Window motions)
+
+# focus the node in the given direction
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the next/previous desktop in the current monitor
+super + ctrl + {Left,Right}
+	bspc desktop -f {prev,next}.local
+
+# move focused window to the next workspace and then switch to that workspace
+super + ctrl + shift + {Left,Right}
+    id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
+
+# focus the next monitor
+super + alt {Left,Right}
+	bspc monitor -f {prev,next}
+
+# move focused window to the next monitor and then switch to that monitor
+super + alt + shift {Left,Right}
+    id=$(bspc query --nodes --node); bspc node --to-monitor {prev,next}; bspc monitor --focus {prev,next}; bspc node --focus ${id}
+
+# expand a window by moving one of its side outward
+super + alt + ctrl + {Left,Down,Up,Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + ctrl + shift + {Left,Down,Up,Right}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# preselect split direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# move a floating window
+super + alt + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+#### End Directional
+
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r}
@@ -62,48 +102,16 @@ super + m
 super + g
 	bspc node -s biggest.window
 
-# focus the node in the given direction
-super + {_,shift + }{Left,Down,Up,Right}
-	bspc node -{f,s} {west,south,north,east}
-
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local.!hidden.window
 
-# focus the next/previous desktop in the current monitor
-super + ctrl + {Left,Right}
-	bspc desktop -f {prev,next}.local
-
-# focus the next monitor
-super + ctrl + alt {Left,Right}
-	bspc monitor -f {prev,next}
-
-# move focused window to the next workspace and then switch to that workspace
-super + ctrl + shift + {Left,Right}
-    id=$(bspc query --nodes --node); bspc node --to-desktop {prev,next}; bspc desktop --focus next; bspc node --focus ${id}
-
-# preselect the direction
-super + ctrl + shift + alt + {Left,Down,Up,Right}
-	bspc node -p {west,south,north,east}
-
 # cancel the preselection for the focused node
-super + ctrl + shift + alt + space
+super + ctrl + space
 	bspc node -p cancel
 
-# expand a window by moving one of its side outward
-super + alt + {Left,Down,Up,Right}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
 
-# contract a window by moving one of its side inward
-super + alt + shift + {Left,Down,Up,Right}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
-
-# move a floating window
-super + shift + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
-
-
-## unused (from example) ##
+## unused/obscure (from example) ##
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -117,9 +125,9 @@ super + ctrl + {m,x,y,z}
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-# focus the last node/desktop
-super + {grave,Tab}
-	bspc {node,desktop} -f last
+## focus the last node/desktop
+#super + {grave,Tab}
+#	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
 super + {o,i}
