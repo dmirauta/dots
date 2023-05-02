@@ -1,10 +1,10 @@
 #!/bin/bash
 
-DOTDIRS=( .xinitrc:~
-          bspwmrc:~/.config/bspwm/ 
-          sxhkdrc:~/.config/sxhkd/
-          dunstrc:~/.config/dunst/
-          config.ini:~/.config/polybar/ )
+DOTDIRS=( .xinitrc:$HOME
+           bspwmrc:$HOME/.config/bspwm/ 
+           sxhkdrc:$HOME/.config/sxhkd/
+           dunstrc:$HOME/.config/dunst/
+           config.ini:$HOME/.config/polybar/ )
 
 INSTALL="pacman -S"
 
