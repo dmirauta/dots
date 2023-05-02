@@ -1,6 +1,6 @@
 #! /bin/sh
 
-## load some auxillary things first
+## load some auxillary things first ##
 
 # keybinds
 pgrep -x sxhkd > /dev/null || sxhkd &
@@ -19,7 +19,7 @@ feh --no-fehbg --bg-fill $HOME/Pictures/dual_1440p/cuts/6593144_right.jpg \
 polybar main &
 polybar secondary & # second monitor
 
-## bspwm config
+## bspwm config ##
 
 ## single monitor
 #bspc monitor -d I II III IV V VI VII VIII IX X

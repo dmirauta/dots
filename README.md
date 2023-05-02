@@ -1,7 +1,15 @@
+ 
+Basic set of configs (mostly from corresponding defaults) for a bspwm based desktop environment.
 
-Edit wallpaper paths(s) (`feh` command in `bspwmrc`) and monitor count related lines.
+Minimum changes:
+- `config.ini`: define `monitor = ` (per bar) for multi monitor setup or comment out otherwise.
+- `bspwmrc`: Edit wallpaper paths(s) for `feh`, number of polybars and `bspc monitor` lines.
 
-See auto.sh
+Use `auto.sh` to install dependencies and insert modified configs in the relevant directories.
+
+Todo:
+- Autogen multimonitor configs (minimise min changes and put in one place)
+- option to quickly swap arrows and hjkl in keybinds for whichever is prefered as promminent?
 
 Notes:
 - spectacle is nice but may bring in too many KDE dependencies? (Otherwise KDE system settings is also quite nice)
