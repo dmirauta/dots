@@ -1,26 +1,13 @@
 #!/bin/bash
 
-#### Quickstart
-
-WALLBASE=$HOME/Pictures/dual_1440p/cuts
-export WALLPAPERS="$WALLBASE/6593144_right.jpg $WALLBASE/6593144_left.jpg"
-# order acording to `xrandr --listmonitors`
-DISPLAYS=("DisplayPort-2" "DisplayPort-1") # can leave empty () for single monitor
-WORKSPACES=("I II III IV" "V VI VII VIII")
-N_MONITORS=2
-
-export INTERFACE_NAME=enp39s0
-
-#### 
-
-INSTALL="pacman -S"
+source userconfig.sh
 
 DOTDIRS=( .xinitrc:$HOME/
            bspwmrc:$HOME/.config/bspwm/ 
            sxhkdrc:$HOME/.config/sxhkd/
            dunstrc:$HOME/.config/dunst/
            config.ini:$HOME/.config/polybar/ )
- 
+
 
 case $1 in
 
@@ -46,17 +33,17 @@ case $1 in
 
   deps)
     echo "Installing main packages..."
-    $INSTALL xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi spectacle dunst xsecurelock playerctl
+    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi spectacle dunst xsecurelock playerctl
 
     AUDIOLIB=$(printf "libpulse\npipewire-pulse\nnone" | rofi -dmenu -p "Select audio library")
     if [ $AUDIOLIB!="none" ] ; then 
-      $INSTALL $AUDIOLIB
+      $INSTALL_CMD $AUDIOLIB
     fi
 
     LAPTOP_PACKAGES="xfce4-power-manager brightnessctl"
     INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install laptop packages? ($LAPTOP_PACKAGES)")
     if [ $INSTLAPDEPS=="Yes" ] ; then 
-      $INSTALL $LAPTOP_PACKAGES
+      $INSTALL_CMD $LAPTOP_PACKAGES
     fi
 
     ;;
