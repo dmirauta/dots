@@ -1,4 +1,5 @@
 backedup/**
 src/bspwmrc
 src/config.ini
+src/sxhkdrc
 userconfig.sh

@@ -36,6 +36,7 @@ case $1 in
     done
     envsubst < templates/config.ini > ./src/config.ini
     envsubst < templates/bspwmrc > ./src/bspwmrc
+    SCRIPTS=$PWD/scripts envsubst < templates/sxhkdrc > ./src/sxhkdrc
 
     ;;
 

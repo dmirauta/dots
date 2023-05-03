@@ -31,6 +31,9 @@ XF86Audio{Play,Stop,Prev,Next}
 XF86Audio{RaiseVolume,LowerVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 
+ctrl + shift + s
+  bash $SCRIPTS/change_sink.sh
+
 # Mute
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
