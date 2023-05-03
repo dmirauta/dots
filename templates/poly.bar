@@ -35,7 +35,8 @@ enable-ipc = true
 padding-left = 0
 padding-right = 1
 
-tray-position = right # only one tray can use it, first come first serve
+# only one tray can use it, first come first serve
+tray-position = right 
 ; tray-detached = true
 ; tray-offset-x = -5
 
