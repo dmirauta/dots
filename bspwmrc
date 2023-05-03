@@ -6,13 +6,13 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # compositor
-picom &
+pgrep -x picom > /dev/null || picom &
 
 # notifications
-dunst &
+pgrep -x dunst > /dev/null || dunst &
 
 # wallpaper # order acording to `xrandr --listmonitors`
-feh --no-fehbg --bg-fill /home/d/Pictures/dual_1440p/cuts/6593144_right.jpg /home/d/Pictures/dual_1440p/cuts/6593144_left.jpg
+feh --no-fehbg --bg-fill /home/d/Pictures/dual_1440p/cuts/6593144_right.jpg /home/d/Pictures/dual_1440p/cuts/6593144_left.jpg || echo "Check wallpaper path?"
 
 # status bar
 polybar BAR0 &
