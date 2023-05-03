@@ -15,7 +15,7 @@ export INTERFACE_NAME=enp39s0
 
 INSTALL="pacman -S"
 
-DOTDIRS=( .xinitrc:$HOME
+DOTDIRS=( .xinitrc:$HOME/
            bspwmrc:$HOME/.config/bspwm/ 
            sxhkdrc:$HOME/.config/sxhkd/
            dunstrc:$HOME/.config/dunst/
@@ -74,8 +74,19 @@ case $1 in
 
     ;;
 
+  backup)
+
+    echo "Backing up..."
+    for dotdirpair in "${DOTDIRS[@]}" ; do
+        sourcefile="${dotdirpair%%:*}"
+        targetdir="${dotdirpair##*:}"
+        cp ${targetdir}${sourcefile} ./backedup/
+    done
+
+    ;;
+
   *)
-    echo Issue \'generate\', \'deps\' or \'update\' as argument.
+    echo Issue \'generate\', \'deps\', \'backup\' or \'update\' as argument.
     ;;
 
 esac
