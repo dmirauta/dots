@@ -8,10 +8,18 @@ DOTDIRS=( .xinitrc:$HOME/
            dunstrc:$HOME/.config/dunst/
            config.ini:$HOME/.config/polybar/ )
 
+function foreachdot {
+  for dotdirpair in "${DOTDIRS[@]}" ; do
+     sourcefile="${dotdirpair%%:*}"
+     targetdir="${dotdirpair##*:}"
+     # printf "source: %s  target: %s\n" "$sourcefile" "$targetdir"
+     eval $1
+  done
+}
 
 case $1 in
 
-  generate)
+  compose)
 
     NL=$'\n'
     BARDEFS=""
@@ -26,8 +34,8 @@ case $1 in
       export BARSENABLE="${BARSENABLE}polybar $BARID &$NL"
       export BSPCMON="${BSPCMON}bspc monitor ${DISPLAYS[i]} -d ${WORKSPACES[i]} &$NL"
     done
-    envsubst < templates/config.ini > config.ini
-    envsubst < templates/bspwmrc > bspwmrc
+    envsubst < templates/config.ini > ./src/config.ini
+    envsubst < templates/bspwmrc > ./src/bspwmrc
 
     ;;
 
@@ -49,31 +57,26 @@ case $1 in
     ;;
 
   update)
-
     echo "Installing dots..."
-    for dotdirpair in "${DOTDIRS[@]}" ; do
-        sourcefile="${dotdirpair%%:*}"
-        targetdir="${dotdirpair##*:}"
-        # printf "source: %s  target: %s\n" "$sourcefile" "$targetdir"
-        mkdir -p $targetdir
-        cp $sourcefile $targetdir
-    done
-
+    foreachdot $'mkdir -p $targetdir && cp ./src/$sourcefile $targetdir'
     ;;
 
   backup)
-
     echo "Backing up..."
-    for dotdirpair in "${DOTDIRS[@]}" ; do
-        sourcefile="${dotdirpair%%:*}"
-        targetdir="${dotdirpair##*:}"
-        cp ${targetdir}${sourcefile} ./backedup/
-    done
+    foreachdot $'cp ${targetdir}${sourcefile} ./backedup/'
+    ;;
 
+  restore)
+    echo 'Restoring...'
+    foreachdot $'cp ./backedup/${sourcefile} ${targetdir}'
     ;;
 
   *)
-    echo Issue \'generate\', \'deps\', \'backup\' or \'update\' as argument.
+    CMDS=("compose" "deps" "backup" "restore" "update")
+    echo "Usage \"./auto.sh <cmd>\" with command from:"
+    for cmd in ${CMDS[@]} ; do 
+      echo $'\t' $cmd
+    done
     ;;
 
 esac

@@ -1,7 +1,7 @@
  
 Basic set of configs (mostly from corresponding defaults) for a bspwm based desktop environment.
 
-For a minimum change quickstart, duplicate `userconfig-example.sh` to `userconfig.sh` and edit to suit your monitor setup. Then use `./auto.sh generate && ./auto.sh update` to apply these changes. Dependencies can be grabbed with the `./auto.sh deps` command (edit `INSTALL_CMD` variable if not using `pacman`).
+For a minimum change quickstart, duplicate `userconfig-example.sh` to `userconfig.sh` and edit to suit your monitor setup. Then use `./auto.sh compose && ./auto.sh update` to apply these changes. Dependencies can be grabbed with the `./auto.sh deps` command (edit `INSTALL_CMD` variable if not using `pacman`).
 
 Todo:
 - option to quickly swap arrows and hjkl in keybinds for whichever is prefered as promminent?
