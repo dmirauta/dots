@@ -6,10 +6,10 @@ super + Return
 	alacritty
 
 # program launcher
-super + @space 
+super + @space
 	rofi -show combi -combi-modes "drun,window,filebrowser" -modes combi -monitor -1 # currently focused monitor
 
-# make sxhkd reload its configuration files:
+# make sxhkd reload its configuration files
 super + Escape
 	pkill -USR1 -x sxhkd
 
@@ -31,8 +31,12 @@ XF86Audio{Play,Stop,Prev,Next}
 XF86Audio{RaiseVolume,LowerVolume}
 	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
 
+# Change audio out
 ctrl + shift + s
   bash $SCRIPTS/change_sink.sh
+
+ctrl + shift + b
+  bash $SCRIPTS/cheat_sheet.sh
 
 # Mute
 XF86AudioMute
@@ -144,10 +148,10 @@ super + {_,shift + }{1-9,0}
 
 ## preselect the ratio
 #super + ctrl + {1-9}
-#	bspc node -o 0.{1-9}
+#  bspc node -o 0.{1-9}
 
 ## cancel the preselection for the focused desktop
 #super + ctrl + shift + space
-#	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+#  bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
 

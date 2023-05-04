@@ -60,6 +60,7 @@ case $1 in
   themes)
     echo "Installing rofi theme..."
     git clone https://github.com/catppuccin/rofi && ./rofi/basic/install.sh
+    ;;
 
   update)
     echo "Installing dots..."
