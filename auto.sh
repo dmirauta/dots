@@ -57,6 +57,10 @@ case $1 in
 
     ;;
 
+  themes)
+    echo "Installing rofi theme..."
+    git clone https://github.com/catppuccin/rofi && ./rofi/basic/install.sh
+
   update)
     echo "Installing dots..."
     foreachdot $'mkdir -p $targetdir && cp ./src/$sourcefile $targetdir'
@@ -73,7 +77,7 @@ case $1 in
     ;;
 
   *)
-    CMDS=("compose" "deps" "backup" "restore" "update")
+    CMDS=("compose" "deps" "themes" "backup" "restore" "update")
     echo "Usage \"./auto.sh <cmd>\" with command from:"
     for cmd in ${CMDS[@]} ; do 
       echo $'\t' $cmd
