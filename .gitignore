@@ -1,4 +1,5 @@
 backedup/**
+themes/**
 src/bspwmrc
 src/config.ini
 src/sxhkdrc
