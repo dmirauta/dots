@@ -28,8 +28,13 @@ case $1 in
     let I=N_MONITORS-1
     for i in $(seq 0 $I) ; do
       export BARID="BAR$i"
-      export MON="monitor = ${DISPLAYS[i]}"
-      export BAR="$(envsubst < templates/poly.bar)"
+      export BAR=";
+
+[bar/$BARID]
+inherit = module/bar
+monitor = ${DISPLAYS[i]}
+
+;"
       export BARDEFS="${BARDEFS}${BAR}${NL}"
       export BARSENABLE="${BARSENABLE}polybar $BARID &$NL"
       export BSPCMON="${BSPCMON}bspc monitor ${DISPLAYS[i]} -d ${WORKSPACES[i]} &$NL"
@@ -62,6 +67,9 @@ case $1 in
     git clone https://github.com/catppuccin/rofi themes/rofi
     cd ./themes/rofi/basic/
     ./install.sh
+
+    # use https://github.com/adi1090x/polybar-themes for polybar?
+
     ;;
 
   update)
