@@ -49,8 +49,11 @@ monitor = ${DISPLAYS[i]}
 
   deps)
     echo "Installing main packages..."
-    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi spectacle dunst xsecurelock playerctl
+    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi dunst xsecurelock playerctl spectacle
 
+    ## Include some optional packages?
+    # $INSTALL_CMD ranger ueberzug broot
+    
     AUDIOLIB=$(printf "libpulse\npipewire-pulse\nnone" | rofi -dmenu -p "Select audio library")
     if [ $AUDIOLIB!="none" ] ; then 
       $INSTALL_CMD $AUDIOLIB
