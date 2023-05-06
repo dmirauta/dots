@@ -2,20 +2,23 @@
 
 source userconfig.sh
 
+CONF=$HOME/.config
 DOTDIRS=( .xinitrc:$HOME/
-           bspwmrc:$HOME/.config/bspwm/ 
-           sxhkdrc:$HOME/.config/sxhkd/
-           dunstrc:$HOME/.config/dunst/
-           config.ini:$HOME/.config/polybar/ )
+           bspwmrc:$CONF/bspwm/ 
+           sxhkdrc:$CONF/sxhkd/
+           dunstrc:$CONF/dunst/
+           # rc.conf:$CONF/ranger/
+           config.ini:$CONF/polybar/
+           alacritty.yml:$CONF/alacritty/ )
 
 function foreachdot {
   for dotdirpair in "${DOTDIRS[@]}" ; do
      sourcefile="${dotdirpair%%:*}"
      targetdir="${dotdirpair##*:}"
-     # printf "source: %s  target: %s\n" "$sourcefile" "$targetdir"
      eval $1
   done
 }
+# foreachdot $'printf "source: %s  target: %s\n" "$sourcefile" "$targetdir"'
 
 case $1 in
 
@@ -68,6 +71,11 @@ monitor = ${DISPLAYS[i]}
     ;;
 
   themes)
+
+    # using cascadia font from https://www.nerdfonts.com/font-downloads
+    # wget, include file or do manually?
+    # is available on arch as ttf-cascadia-code-nerd
+
     THIS=$PWD
 
     if [[ ! -d themes/rofi ]] ; then
@@ -79,10 +87,7 @@ monitor = ${DISPLAYS[i]}
     else
       echo "https://github.com/catppuccin/rofi already present, may already have installed?"
     fi
-
-    # using cascadia font from https://www.nerdfonts.com/font-downloads
-    # wget, include file or do manually?
-    # is available on arch as ttf-cascadia-code-nerd
+    sed -i 's/font.*/font: "CaskaydiaCove Nerd Font Mono 14";/g' $HOME/.local/share/rofi/themes/catppuccin-mocha.rasi
 
     ;;
 
