@@ -89,11 +89,9 @@ monitor = ${DISPLAYS[i]}
 
       ### directly from setup.sh in adi1090x/polybar-themes
       # Install Fonts
-      install_fonts() {
-	      echo -e "\n[*] Installing fonts..."
-      	[[ ! -d "$FDIR" ]] && mkdir -p "$FDIR"
-      	cp -rf $DIR/fonts/* "$FDIR"
-      }
+	    echo -e "\n[*] Installing fonts..."
+      [[ ! -d "$FDIR" ]] && mkdir -p "$FDIR"
+      cp -rf fonts/* "$FDIR"
       ###
 
       cd $THIS
