@@ -69,7 +69,7 @@ super + alt {Left,Right}
 
 # move node to next/prev monitor and follow
 super + alt + shift {Left,Right}
-   bspc node -m {prev,next}.local --follow
+   bspc node -m {prev,next} --follow
 
 # expand a window by moving one of its side outward
 super + alt + ctrl + {Left,Down,Up,Right}

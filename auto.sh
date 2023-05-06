@@ -25,6 +25,7 @@ case $1 in
     BARDEFS=""
     BARSENABLE=""
     BSPCMON=""
+
     let I=N_MONITORS-1
     for i in $(seq 0 $I) ; do
       export BARID="BAR$i"
@@ -39,10 +40,11 @@ monitor = ${DISPLAYS[i]}
       export BARSENABLE="${BARSENABLE}polybar $BARID &$NL"
       export BSPCMON="${BSPCMON}bspc monitor ${DISPLAYS[i]} -d ${WORKSPACES[i]} &$NL"
     done
-    envsubst < templates/config.ini > ./src/config.ini
-    envsubst < templates/bspwmrc > ./src/bspwmrc
-    SCRIPTS=$PWD/scripts envsubst < templates/sxhkdrc > ./src/sxhkdrc
 
+    export SCRIPTS=$PWD/scripts 
+    envsubst < ./templates/config.ini > ./src/config.ini
+    envsubst < ./templates/bspwmrc    > ./src/bspwmrc
+    envsubst < ./templates/sxhkdrc    > ./src/sxhkdrc
     ;;
 
   deps)
@@ -63,12 +65,41 @@ monitor = ${DISPLAYS[i]}
     ;;
 
   themes)
-    echo "Installing rofi theme..."
-    git clone https://github.com/catppuccin/rofi themes/rofi
-    cd ./themes/rofi/basic/
-    ./install.sh
+    THIS=$PWD
 
-    # use https://github.com/adi1090x/polybar-themes for polybar?
+    if [[ ! -d themes/rofi ]] ; then
+      echo "Installing rofi theme..."
+      git clone https://github.com/catppuccin/rofi themes/rofi
+      cd ./themes/rofi/basic/
+      ./install.sh
+      cd $THIS
+    else
+      echo "https://github.com/catppuccin/rofi already present, may already have installed?"
+    fi
+
+    # just using for fonts currently
+    if [[ ! -d themes/polybar ]] ; then
+      echo "Installing polybar theme..."
+      git clone https://github.com/adi1090x/polybar-themes themes/polybar
+      cd ./themes/polybar
+
+
+      FDIR="$HOME/.local/share/fonts"
+      PDIR="$HOME/.config/polybar"
+
+      ### directly from setup.sh in adi1090x/polybar-themes
+      # Install Fonts
+      install_fonts() {
+	      echo -e "\n[*] Installing fonts..."
+      	[[ ! -d "$FDIR" ]] && mkdir -p "$FDIR"
+      	cp -rf $DIR/fonts/* "$FDIR"
+      }
+      ###
+
+      cd $THIS
+    else
+      echo "https://github.com/adi1090x/polybar-themes already present, may already have installed?"
+    fi
 
     ;;
 
