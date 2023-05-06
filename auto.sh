@@ -50,13 +50,13 @@ monitor = ${DISPLAYS[i]}
     envsubst < ./templates/sxhkdrc    > ./src/sxhkdrc
     ;;
 
-  deps)
+  setup)
     echo "Installing main packages..."
-    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi dunst xsecurelock playerctl spectacle
-
-    ## Include some optional packages?
-    # $INSTALL_CMD ranger ueberzug broot
-    
+    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi dunst xsecurelock playerctl spectacle git
+    echo "Installing secondary packages..."
+    $INSTALL_CMD ranger ueberzug broot zsh-theme-powerlevel10k
+    echo "Remember to run \"p10k configure\" to customise zsh prompt."
+         
     AUDIOLIB=$(printf "libpulse\npipewire-pulse\nnone" | rofi -dmenu -p "Select audio library")
     if [ $AUDIOLIB!="none" ] ; then 
       $INSTALL_CMD $AUDIOLIB
@@ -66,6 +66,11 @@ monitor = ${DISPLAYS[i]}
     INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install laptop packages? ($LAPTOP_PACKAGES)")
     if [ $INSTLAPDEPS=="Yes" ] ; then 
       $INSTALL_CMD $LAPTOP_PACKAGES
+    fi
+
+    INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install nvchad? (set of neovim plugins)")
+    if [ $INSTLAPDEPS=="Yes" ] ; then 
+      git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
     fi
 
     ;;
@@ -97,7 +102,7 @@ monitor = ${DISPLAYS[i]}
     ;;
 
   backup)
-    echo "Backing up..."
+    echo "Backing up... (keep in mind that doing this a second time will overwrite the other backup)"
     foreachdot $'cp ${targetdir}${sourcefile} ./backedup/'
     ;;
 
@@ -107,7 +112,7 @@ monitor = ${DISPLAYS[i]}
     ;;
 
   *)
-    CMDS=("compose" "deps" "themes" "backup" "restore" "update")
+    CMDS=("setup" "themes" "backup" "restore" "compose" "update")
     echo "Usage \"./auto.sh <cmd>\" with command from:"
     for cmd in ${CMDS[@]} ; do 
       echo $'\t' $cmd
