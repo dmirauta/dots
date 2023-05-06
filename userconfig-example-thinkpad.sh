@@ -11,15 +11,6 @@ export INTERFACE_NAME=wls1
 export MAX_TITLE_WIDTH=30
 
 export EXTRA_POLYBAR_MODULES="
-[module/battery]
-type = internal/battery
-full-at = 99
-battery = BAT0
-adapter = ADP1
-poll-interval = 5
-time-format = %H:%M
-label-charging = charging %percentage%%
-label-discharging = %{F#F0C674}BAT%{F-} %percentage%%
 "
 
 export EXTRA_MODULES_BAR="battery"
