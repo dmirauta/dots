@@ -77,27 +77,9 @@ monitor = ${DISPLAYS[i]}
       echo "https://github.com/catppuccin/rofi already present, may already have installed?"
     fi
 
-    # just using for fonts currently
-    if [[ ! -d themes/polybar ]] ; then
-      echo "Installing polybar theme..."
-      git clone https://github.com/adi1090x/polybar-themes themes/polybar
-      cd ./themes/polybar
-
-
-      FDIR="$HOME/.local/share/fonts"
-      PDIR="$HOME/.config/polybar"
-
-      ### directly from setup.sh in adi1090x/polybar-themes
-      # Install Fonts
-	    echo -e "\n[*] Installing fonts..."
-      [[ ! -d "$FDIR" ]] && mkdir -p "$FDIR"
-      cp -rf fonts/* "$FDIR"
-      ###
-
-      cd $THIS
-    else
-      echo "https://github.com/adi1090x/polybar-themes already present, may already have installed?"
-    fi
+    # using cascadia font from https://www.nerdfonts.com/font-downloads
+    # wget, include file or do manually?
+    # is available on arch as ttf-cascadia-code-nerd
 
     ;;
 
