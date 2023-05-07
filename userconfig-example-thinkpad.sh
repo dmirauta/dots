@@ -11,6 +11,10 @@ export INTERFACE_NAME=wls1
 export MAX_TITLE_WIDTH=30
 
 export EXTRA_POLYBAR_MODULES="
+[module/cheat-sheet]
+type = custom/text
+content = CH
+click-left = bash $SCRIPTS/cheat_sheet.sh
 "
 
 export EXTRA_MODULES_BAR="battery"
