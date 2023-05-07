@@ -4,8 +4,15 @@ WALLBASE=$HOME/Pictures
 export WALLPAPERS="$WALLBASE/wallpaper.jpg"
 # order acording to `xrandr --listmonitors`
 DISPLAYS=( ) # can leave empty () for single monitor
-WORKSPACES=("I II III IV V")
+WORKSPACES=("󰇊 󰇋 󰇌 󰇍 󰇎")
 N_MONITORS=1
+
+export BACKGROUND_COLOR=#282A2E
+export BACKGROUND_ALT_COLOR=#373B41
+export PRIMARY_COLOR=#F0C674
+export SECONDARY_COLOR=#8ABEB7
+export NEUTRAL_COLOR=#707880
+export ALERT_COLOR=#FF5555
 
 export INTERFACE_NAME=wls1
 export MAX_TITLE_WIDTH=30

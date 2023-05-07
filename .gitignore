@@ -1,6 +1,11 @@
 backedup/**
 themes/**
+
+# anything generated from templates does not need to be tracked...
 src/bspwmrc
 src/config.ini
 src/sxhkdrc
+src/dunstrc
+src/catppuccin-mocha-mod.rasi
+
 userconfig.sh

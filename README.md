@@ -11,7 +11,6 @@ The keys `ctrl+shift+b` will list keybindings.
 Todo:
 - fix lingering logins (`bspc quit` not loggin out? seen with `loginctl list-sessions`)
 - switch global font in userconfig?
-- consistent primary and secondary colors (swappable in userconfig, or generated from wallpapers)
 - window styling?
 
 Notes:
@@ -19,4 +18,9 @@ Notes:
 - spectacle is nice but may bring in too many KDE dependencies? (Otherwise KDE system settings and system monitor is also quite nice)
 - many use thunar as part of their minimal setup so xfce4 apps are not a worry? (hence xfce4-power-manager is ok)
     - otherwise ranger and/or broot
+
+Resources used:
+    - cascadia font from https://www.nerdfonts.com/font-downloads
+    - dunst config based on: https://github.com/dracula/dunst themes/dunst
+    - rofi theme: https://github.com/catppuccin/rofi themes/rofi
 

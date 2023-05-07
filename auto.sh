@@ -7,9 +7,12 @@ DOTDIRS=( .xinitrc:$HOME/
            bspwmrc:$CONF/bspwm/ 
            sxhkdrc:$CONF/sxhkd/
            dunstrc:$CONF/dunst/
-           # rc.conf:$CONF/ranger/
+           rc.conf:$CONF/ranger/
            config.ini:$CONF/polybar/
-           alacritty.yml:$CONF/alacritty/ )
+           config.rasi:$CONF/rofi/
+           alacritty.yml:$CONF/alacritty/
+           catppuccin-mocha-mod.rasi:$HOME/.local/share/rofi/themes
+         )
 
 function foreachdot {
   for dotdirpair in "${DOTDIRS[@]}" ; do
@@ -45,9 +48,12 @@ monitor = ${DISPLAYS[i]}
     done
 
     export SCRIPTS=$PWD/scripts 
-    envsubst < ./templates/config.ini > ./src/config.ini
-    envsubst < ./templates/bspwmrc    > ./src/bspwmrc
-    envsubst < ./templates/sxhkdrc    > ./src/sxhkdrc
+    envsubst < ./templates/config.ini                > ./src/config.ini
+    envsubst < ./templates/bspwmrc                   > ./src/bspwmrc
+    envsubst < ./templates/sxhkdrc                   > ./src/sxhkdrc
+    envsubst < ./templates/dunstrc                   > ./src/dunstrc
+    envsubst < ./templates/catppuccin-mocha-mod.rasi > ./src/catppuccin-mocha-mod.rasi
+
     ;;
 
   setup)
@@ -75,27 +81,6 @@ monitor = ${DISPLAYS[i]}
 
     ;;
 
-  themes)
-
-    # using cascadia font from https://www.nerdfonts.com/font-downloads
-    # wget, include file or do manually?
-    # is available on arch as ttf-cascadia-code-nerd
-
-    THIS=$PWD
-
-    if [[ ! -d themes/rofi ]] ; then
-      echo "Installing rofi theme..."
-      git clone https://github.com/catppuccin/rofi themes/rofi
-      cd ./themes/rofi/basic/
-      ./install.sh
-      cd $THIS
-    else
-      echo "https://github.com/catppuccin/rofi already present, may already have installed?"
-    fi
-    sed -i 's/font.*/font: "CaskaydiaCove Nerd Font Mono 14";/g' $HOME/.local/share/rofi/themes/catppuccin-mocha.rasi
-
-    ;;
-
   us-greek-kbd)
     echo "Installing custom keyboard layout..."
 
@@ -103,24 +88,25 @@ monitor = ${DISPLAYS[i]}
     bash add_layout
 
     localectl set-x11-keymap cu
+    ;;
 
   update)
     echo "Installing dots..."
-    foreachdot $'mkdir -p $targetdir && cp ./src/$sourcefile $targetdir'
+    foreachdot $'[[ -f ./src/$sourcefile ]] && mkdir -p $targetdir && cp ./src/$sourcefile $targetdir'
     ;;
 
   backup)
     echo "Backing up... (keep in mind that doing this a second time will overwrite the other backup)"
-    foreachdot $'cp ${targetdir}${sourcefile} ./backedup/'
+    foreachdot $'[[ -f ${targetdir}${sourcefile} ]] && cp ${targetdir}${sourcefile} ./backedup/'
     ;;
 
   restore)
     echo 'Restoring...'
-    foreachdot $'cp ./backedup/${sourcefile} ${targetdir}'
+    foreachdot $'[[ -f ./backedup/${sourcefile} ]] && cp ./backedup/${sourcefile} ${targetdir}'
     ;;
 
   *)
-    CMDS=("setup" "themes" "us-greek-kbd" "backup" "restore" "compose" "update")
+    CMDS=("setup" "us-greek-kbd" "backup" "restore" "compose" "update")
     echo "Usage \"./auto.sh <cmd>\" with command from:"
     for cmd in ${CMDS[@]} ; do 
       echo $'\t' $cmd
