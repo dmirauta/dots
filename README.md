@@ -4,12 +4,15 @@ Basic set of configs (mostly from corresponding defaults) for a bspwm based desk
 Goals:
 1. Keep my configs synchronised and reproduceable across the various machines and accounts I use.
 
-For a minimum change quickstart, duplicate `userconfig-example.sh` to `userconfig.sh` and edit to suit your monitor setup. Then use `./auto.sh compose && ./auto.sh update` to apply these changes. Dependencies can be grabbed with the `./auto.sh setup` command (edit `INSTALL_CMD` variable if not using `pacman`).
+For a minimum change quickstart, duplicate an example in`/global` creating `/global/config.sh` and edit to suit your device/monitors. Then use `./auto.sh compose && ./auto.sh update` to apply these changes, first time use may also require `./auto.sh set-exec`. Dependencies can be grabbed with the `./auto.sh setup` command (edit `INSTALL_CMD` variable if not using `pacman`).
 
 The keys `ctrl+shift+b` will list keybindings.
 
 Todo:
 - fix lingering logins (`bspc quit` not loggin out? seen with `loginctl list-sessions`)
+- laptop
+    - autostart power manager?
+    - set to lock on lid down...
 - window styling?
 
 Notes:

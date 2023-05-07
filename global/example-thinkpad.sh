@@ -44,4 +44,4 @@ XF86ScreenSaver
 	XSECURELOCK_COMPOSITE_OBSCURER=0 xsecurelock
 "
 
-INSTALL_CMD="pacman -S"
+INSTALL_CMD="sudo pacman -S"

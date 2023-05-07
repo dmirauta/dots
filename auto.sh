@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source userconfig.sh
+source global/config.sh
 
 CONF=$HOME/.config
 DOTDIRS=( .xinitrc:$HOME/
@@ -59,7 +59,7 @@ monitor = ${DISPLAYS[i]}
 
   setup)
     echo "Installing main packages..."
-    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar alacritty rofi dunst xsecurelock playerctl spectacle git
+    $INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar zsh alacritty rofi dunst xsecurelock playerctl spectacle git
     echo "Installing secondary packages..."
     $INSTALL_CMD ranger ueberzug broot zsh-theme-powerlevel10k
     echo "Remember to run \"p10k configure\" to customise zsh prompt."
@@ -75,11 +75,16 @@ monitor = ${DISPLAYS[i]}
       $INSTALL_CMD $LAPTOP_PACKAGES
     fi
 
-    INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install nvchad? (set of neovim plugins)")
-    if [ $INSTLAPDEPS=="Yes" ] ; then 
+    INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install nvchad? (set of neovim plugins)")
+    if [ $INSTNVC=="Yes" ] ; then 
       git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
     fi
 
+    ;;
+
+  set-exec)
+    sudo chmod +x $HOME/.xinitrc
+    sudo chmod +x $CONF/bspwm/bspwmrc
     ;;
 
   us-greek-kbd)
@@ -98,6 +103,7 @@ monitor = ${DISPLAYS[i]}
 
   backup)
     echo "Backing up... (keep in mind that doing this a second time will overwrite the other backup)"
+    mkdir -p ./backedup/
     foreachdot $'[[ -f ${targetdir}${sourcefile} ]] && cp ${targetdir}${sourcefile} ./backedup/'
     ;;
 
@@ -107,7 +113,7 @@ monitor = ${DISPLAYS[i]}
     ;;
 
   *)
-    CMDS=("setup" "us-greek-kbd" "backup" "restore" "compose" "update")
+    CMDS=("setup" "set-exec" "us-greek-kbd" "backup" "restore" "compose" "update")
     echo "Usage \"./auto.sh <cmd>\" with command from:"
     for cmd in ${CMDS[@]} ; do 
       echo $'\t' $cmd

@@ -27,4 +27,4 @@ export EXTRA_MODULES_BAR="network"
 export EXTRA_KEYDEFS="
 "
 
-INSTALL_CMD="pacman -S"
+INSTALL_CMD="sudo pacman -S"
