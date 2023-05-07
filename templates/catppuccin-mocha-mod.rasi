@@ -9,7 +9,7 @@
     grey:         #6c7086;
 
     width: 600;
-    font: "CaskaydiaCove Nerd Font Mono 14";
+    font: "$GLOBAL_FONT 14";
 }
 
 element-text, element-icon , mode-switcher {

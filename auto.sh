@@ -52,6 +52,7 @@ monitor = ${DISPLAYS[i]}
     envsubst < ./templates/bspwmrc                   > ./src/bspwmrc
     envsubst < ./templates/sxhkdrc                   > ./src/sxhkdrc
     envsubst < ./templates/dunstrc                   > ./src/dunstrc
+    envsubst < ./templates/alacritty.yml             > ./src/alacritty.yml
     envsubst < ./templates/catppuccin-mocha-mod.rasi > ./src/catppuccin-mocha-mod.rasi
 
     ;;

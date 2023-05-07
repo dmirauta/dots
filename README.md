@@ -10,7 +10,6 @@ The keys `ctrl+shift+b` will list keybindings.
 
 Todo:
 - fix lingering logins (`bspc quit` not loggin out? seen with `loginctl list-sessions`)
-- switch global font in userconfig?
 - window styling?
 
 Notes:

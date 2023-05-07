@@ -14,6 +14,8 @@ export SECONDARY_COLOR=#8ABEB7
 export NEUTRAL_COLOR=#707880
 export ALERT_COLOR=#FF5555
 
+export GLOBAL_FONT="CaskaydiaCove Nerd Font Mono"
+
 export INTERFACE_NAME=wls1
 export MAX_TITLE_WIDTH=30
 

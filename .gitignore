@@ -6,6 +6,7 @@ src/bspwmrc
 src/config.ini
 src/sxhkdrc
 src/dunstrc
+src/alacritty.yml
 src/catppuccin-mocha-mod.rasi
 
 userconfig.sh
