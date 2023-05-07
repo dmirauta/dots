@@ -1,0 +1,11 @@
+export PARENT="/usr/share/X11/xkb"
+export RULES="$PARENT/rules"
+export SYMBOLS="$PARENT/symbols"
+
+# backs up files to be replaced
+cp "$RULES/base.lst" "$RULES/base.xml" "$RULES/evdev.lst" "$RULES/evdev.xml" backup
+
+# then replaces with custom versions
+
+cp cu "$SYMBOLS/cu"
+cp base.lst base.xml evdev.lst evdev.xml $RULES

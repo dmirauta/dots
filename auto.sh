@@ -96,6 +96,14 @@ monitor = ${DISPLAYS[i]}
 
     ;;
 
+  us-greek-kbd)
+    echo "Installing custom keyboard layout..."
+
+    cd ./kbd
+    bash add_layout
+
+    localectl set-x11-keymap cu
+
   update)
     echo "Installing dots..."
     foreachdot $'mkdir -p $targetdir && cp ./src/$sourcefile $targetdir'
@@ -112,7 +120,7 @@ monitor = ${DISPLAYS[i]}
     ;;
 
   *)
-    CMDS=("setup" "themes" "backup" "restore" "compose" "update")
+    CMDS=("setup" "themes" "us-greek-kbd" "backup" "restore" "compose" "update")
     echo "Usage \"./auto.sh <cmd>\" with command from:"
     for cmd in ${CMDS[@]} ; do 
       echo $'\t' $cmd

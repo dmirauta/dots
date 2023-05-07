@@ -6,6 +6,8 @@ Goals:
 
 For a minimum change quickstart, duplicate `userconfig-example.sh` to `userconfig.sh` and edit to suit your monitor setup. Then use `./auto.sh compose && ./auto.sh update` to apply these changes. Dependencies can be grabbed with the `./auto.sh setup` command (edit `INSTALL_CMD` variable if not using `pacman`).
 
+The keys `ctrl+shift+b` will list keybindings.
+
 Todo:
 - fix lingering logins (`bspc quit` not loggin out? seen with `loginctl list-sessions`)
 - switch global font in userconfig?
