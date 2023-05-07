@@ -69,6 +69,12 @@ monitor = ${DISPLAYS[i]}
       $INSTALL_CMD $AUDIOLIB
     fi
 
+    KDE_PACKAGES="qt5ct dolphin systemsettings plasma-workspace"
+    INSTKDEDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install KDE packages? ($KDE_PACKAGES)")
+    if [ $INSTKDEDEPS=="Yes" ] ; then 
+      $INSTALL_CMD $KDE_PACKAGES
+    fi
+
     LAPTOP_PACKAGES="xfce4-power-manager brightnessctl"
     INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install laptop packages? ($LAPTOP_PACKAGES)")
     if [ $INSTLAPDEPS=="Yes" ] ; then 

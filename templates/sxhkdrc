@@ -15,7 +15,11 @@ super + Escape
 
 # screenshot
 alt + shift + s
-	spectacle --region
+	spectacle --region -b
+
+# delayed screenshot (4 sec)
+alt + shift + d
+	spectacle --region -b -d 4000
 
 # lockscreen
 super + l

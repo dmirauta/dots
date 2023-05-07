@@ -1,5 +1,8 @@
 #! /bin/sh
 
+# required for programs like dolphin to be styled correctly
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 ## autostart ##
 
 # keybinds
