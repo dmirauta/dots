@@ -79,6 +79,7 @@ monitor = ${DISPLAYS[i]}
     INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install laptop packages? ($LAPTOP_PACKAGES)")
     if [ $INSTLAPDEPS=="Yes" ] ; then 
       $INSTALL_CMD $LAPTOP_PACKAGES
+      xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -s false
     fi
 
     INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install nvchad? (set of neovim plugins)")

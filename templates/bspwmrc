@@ -17,6 +17,8 @@ pgrep -x dunst > /dev/null || dunst &
 # wallpaper # order acording to `xrandr --listmonitors`
 feh --no-fehbg --bg-fill $WALLPAPERS || echo "Check wallpaper path?"
 
+$EXTRA_AUTOSTART
+
 # status bar
 $BARSENABLE
 

@@ -9,4 +9,5 @@ src/dunstrc
 src/alacritty.yml
 src/catppuccin-mocha-mod.rasi
 
-userconfig.sh
+# will vary from machine to machine...
+global/config.sh

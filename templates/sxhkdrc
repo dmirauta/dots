@@ -50,6 +50,7 @@ XF86AudioMute
 XF86MonBrightness{Down,Up}
     brightnessctl set {10%-,+10%}
 
+$EXTRA_KEYDEFS
 
 ## bspwm hotkeys ##
 
