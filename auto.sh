@@ -11,6 +11,7 @@ DOTDIRS=( .xinitrc:$HOME/
            config.ini:$CONF/polybar/
            config.rasi:$CONF/rofi/
            alacritty.yml:$CONF/alacritty/
+           lspconfig.lua:$CONF/nvim/lua/custom/configs/
            catppuccin-mocha-mod.rasi:$HOME/.local/share/rofi/themes
          )
 
@@ -85,6 +86,12 @@ monitor = ${DISPLAYS[i]}
     INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install nvchad? (set of neovim plugins)")
     if [ $INSTNVC=="Yes" ] ; then 
       git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+    fi
+
+    SETUPLSPS=$(printf "Yes\nNo" | rofi -dmenu -p "Setup LSPs?")
+    if [ $SETUPLSPS=="Yes" ] ; then 
+      $INSTALL_CMD python-lsp-server rustup
+      rustup compoent add rust-analyzer
     fi
 
     ;;
