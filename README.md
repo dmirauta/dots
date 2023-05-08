@@ -6,6 +6,8 @@ Goals:
 
 For a minimum change quickstart, duplicate an example in`/global` creating `/global/config.sh` and edit to suit your device/monitors. Then use `./auto.sh compose && ./auto.sh update` to apply these changes, first time use may also require `./auto.sh set-exec`. Dependencies can be grabbed with the `./auto.sh setup` command (edit `INSTALL_CMD` variable if not using `pacman`).
 
+As well as setting up the DE, this also syncs some nvim configs, comment out undesired dots from `DOTDIRS` array in `auto.sh`.
+
 The keys `ctrl+shift+b` will list keybindings.
 
 Todo:
