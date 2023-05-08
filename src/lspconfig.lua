@@ -19,6 +19,8 @@ lspconfig["pylsp"].setup {
   settings = {
     pylsp = {
       plugins = {
+        pycodestyle = { enabled = false },
+        flake8 = { enabled = false },
         pylint = {args = {'--ignore=E401,E202,E221', '-'}, enabled=true, debounce=200},
       },
     },
