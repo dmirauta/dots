@@ -12,7 +12,7 @@ Todo:
 - fix lingering logins (`bspc quit` not loggin out? seen with `loginctl list-sessions`)
 - laptop
     - auto lock and suspend on lid down? Currently must manually lock before lid down...
-- full desktop zoom (e.g. on <super> + <plus>) like in KDE would be nice, though would have to be supported in compositor,possibly only available in compiz (old)
+- full desktop zoom (e.g. on `<super> + <plus>`) like in KDE would be nice, though would have to be supported in compositor, possibly only available in compiz (old)
 
 Notes:
 - some configs do not like comments after definitions! (keep comments on separate lines)
