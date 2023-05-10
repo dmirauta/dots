@@ -11,16 +11,14 @@ As well as setting up the DE, this also syncs some nvim configs, comment out und
 The keys `ctrl+shift+b` will list keybindings.
 
 Todo:
-- fix lingering logins (`bspc quit` not loggin out? seen with `loginctl list-sessions`)
 - laptop
     - auto lock and suspend on lid down? Currently must manually lock before lid down...
 - full desktop zoom (e.g. on `<super> + <plus>`) like in KDE would be nice, though would have to be supported in compositor, possibly only available in compiz (old)
 
 Notes:
+- `bspc quit` does not seem to properly log out when using sddm according to `loginctl list-sessions`, not an issue when just using `startx` from tty
 - some configs do not like comments after definitions! (keep comments on separate lines)
-- spectacle is nice but may bring in too many KDE dependencies? (Otherwise KDE system settings and system monitor is also quite nice)
-- many use thunar as part of their minimal setup so xfce4 apps are not a worry? (hence xfce4-power-manager is ok)
-    - otherwise ranger and/or broot
+- spectacle is nice but may bring in too many KDE dependencies? (Otherwise dolphin, KDE system settings and system monitor are also quite nice)
 
 Resources used:
     - cascadia font from https://www.nerdfonts.com/font-downloads

@@ -19,6 +19,8 @@ export GLOBAL_FONT="CaskaydiaCove Nerd Font Mono"
 export INTERFACE_NAME=enp39s0
 export MAX_TITLE_WIDTH=60
 
+export EXTRA_AUTOSTART="xrandr --output DisplayPort-1 --right-of DisplayPort-2"
+
 export EXTRA_POLYBAR_MODULES="
 "
 
