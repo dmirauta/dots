@@ -54,6 +54,9 @@ $EXTRA_KEYDEFS
 
 ## bspwm hotkeys ##
 
+# Mouse move window (floating or tiled)
+  # super + left-click + drag
+
 #### Begin Directional (Window motions)
 
 # focus the node in the given direction
