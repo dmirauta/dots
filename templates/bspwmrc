@@ -34,6 +34,10 @@ bspc config gapless_monocle      true
 
 bspc rule -a Firefox desktop='^2'
 
+bspc monitor -f "^1"
+bspc desktop -f "^1"
+xdotool mousemove 100 100
+
 ## other uses
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 #bspc rule -a mplayer2 state=floating
