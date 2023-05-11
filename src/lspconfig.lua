@@ -13,6 +13,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+local ignored_warnings="E401,E202,E221,missing-function-docstring,multiple-imports,wrong-import-position,trailing-whitespace"
 lspconfig["pylsp"].setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -21,7 +22,7 @@ lspconfig["pylsp"].setup {
       plugins = {
         pycodestyle = { enabled = false },
         flake8 = { enabled = false },
-        pylint = {args = {'--ignore=E401,E202,E221', '-'}, enabled=true, debounce=200},
+        pylint = {args = {'-d='..ignored_warnings, '-'}, enabled=true, debounce=200},
       },
     },
   },
