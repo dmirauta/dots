@@ -14,6 +14,8 @@ pgrep -x picom > /dev/null || picom &
 # notifications
 pgrep -x dunst > /dev/null || dunst &
 
+/usr/lib/polkit-kde-authentication-agent-1 &
+
 $EXTRA_AUTOSTART
 
 # wallpaper # order acording to `xrandr --listmonitors`
