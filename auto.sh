@@ -4,6 +4,7 @@ source global/config.sh
 
 CONF=$HOME/.config
 DOTDIRS=( .xinitrc:$HOME/
+          # .zshrc:$HOME/
            bspwmrc:$CONF/bspwm/ 
            sxhkdrc:$CONF/sxhkd/
            dunstrc:$CONF/dunst/

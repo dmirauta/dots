@@ -7,6 +7,7 @@ SAVEHIST=10000
 
 alias vim=nvim
 export EDITOR=nvim
+export TERMINAL=alacritty
 ###
 
 ### (for python) basic conda like global envs with only venv...
