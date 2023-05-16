@@ -12,7 +12,6 @@ DOTDIRS=( .xinitrc:$HOME/
            config.ini:$CONF/polybar/
            config.rasi:$CONF/rofi/
            alacritty.yml:$CONF/alacritty/
-           lspconfig.lua:$CONF/nvim/lua/custom/configs/
            catppuccin-mocha-mod.rasi:$HOME/.local/share/rofi/themes
          )
 
@@ -71,7 +70,7 @@ monitor = ${DISPLAYS[i]}
       $INSTALL_CMD $AUDIOLIB
     fi
 
-    KDE_PACKAGES="qt5ct dolphin systemsettings plasma-workspace polkit-kde-agent"
+    KDE_PACKAGES="qt5ct qt6ct dolphin systemsettings plasma-workspace polkit-kde-agent"
     INSTKDEDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install KDE packages? ($KDE_PACKAGES)")
     if [ $INSTKDEDEPS=="Yes" ] ; then 
       $INSTALL_CMD $KDE_PACKAGES
@@ -84,9 +83,13 @@ monitor = ${DISPLAYS[i]}
       xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -s false
     fi
 
-    INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install nvchad? (set of neovim plugins)")
+    INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install astronvim? (set of neovim plugins)")
     if [ $INSTNVC=="Yes" ] ; then 
-      git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1 && nvim
+      [[ -f ~/.config/nvim ]]      && mv -n ~/.config/nvim ~/.config/nvim.bak
+      [[ -f ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
+      [[ -f ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
+      [[ -f ~/.cache/nvim ]]       && mv -n ~/.cache/nvim ~/.cache/nvim.bak
+      git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim --depth 1 && nvim
     fi
 
     SETUPLSPS=$(printf "Yes\nNo" | rofi -dmenu -p "Setup LSPs?")
