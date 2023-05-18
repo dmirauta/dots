@@ -85,10 +85,10 @@ monitor = ${DISPLAYS[i]}
 
     INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install astronvim? (set of neovim plugins)")
     if [ $INSTNVC=="Yes" ] ; then 
-      [[ -f ~/.config/nvim ]]      && mv -n ~/.config/nvim ~/.config/nvim.bak
-      [[ -f ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
-      [[ -f ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
-      [[ -f ~/.cache/nvim ]]       && mv -n ~/.cache/nvim ~/.cache/nvim.bak
+      [[ -d ~/.config/nvim ]]      && mv -n ~/.config/nvim ~/.config/nvim.bak
+      [[ -d ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
+      [[ -d ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
+      [[ -d ~/.cache/nvim ]]       && mv -n ~/.cache/nvim ~/.cache/nvim.bak
       git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim --depth 1 && nvim
     fi
 
