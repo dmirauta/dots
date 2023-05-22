@@ -79,30 +79,19 @@ setup)
 		$INSTALL_CMD $KDE_PACKAGES
 	fi
 
-<<<<<<< HEAD
 	LAPTOP_PACKAGES="xfce4-power-manager brightnessctl"
 	INSTLAPDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install laptop packages? ($LAPTOP_PACKAGES)")
 	if [ $INSTLAPDEPS == "Yes" ]; then
 		$INSTALL_CMD $LAPTOP_PACKAGES
 		xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/logind-handle-lid-switch -s false
 	fi
-=======
-    INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install astronvim? (set of neovim plugins)")
-    if [ $INSTNVC=="Yes" ] ; then 
-      [[ -d ~/.config/nvim ]]      && mv -n ~/.config/nvim ~/.config/nvim.bak
-      [[ -d ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
-      [[ -d ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
-      [[ -d ~/.cache/nvim ]]       && mv -n ~/.cache/nvim ~/.cache/nvim.bak
-      git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim --depth 1 && nvim
-    fi
->>>>>>> 5c1748015d848d59f19746f27f684c80b98fa9b8
 
 	INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install astronvim? (set of neovim plugins)")
 	if [ $INSTNVC == "Yes" ]; then
-		[[ -f ~/.config/nvim ]] && mv -n ~/.config/nvim ~/.config/nvim.bak
-		[[ -f ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
-		[[ -f ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
-		[[ -f ~/.cache/nvim ]] && mv -n ~/.cache/nvim ~/.cache/nvim.bak
+		[[ -d ~/.config/nvim ]] && mv -n ~/.config/nvim ~/.config/nvim.bak
+		[[ -d ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
+		[[ -d ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
+		[[ -d ~/.cache/nvim ]] && mv -n ~/.cache/nvim ~/.cache/nvim.bak
 		git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim --depth 1 && nvim
 	fi
 

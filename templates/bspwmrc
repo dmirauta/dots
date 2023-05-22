@@ -36,7 +36,7 @@ bspc config gapless_monocle true
 
 # bspc rule -a Firefox desktop='^2'
 bspc rule -a "matplotlib" state=floating
-bspc rule -a "zathura" state=tiled
+bspc rule -a "Zathura" state=tiled
 
 bspc monitor -f "^1"
 bspc desktop -f "^1"
