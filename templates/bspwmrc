@@ -6,13 +6,13 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 ## autostart ##
 
 # keybinds
-pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x sxhkd >/dev/null || sxhkd &
 
 # compositor
-pgrep -x picom > /dev/null || picom &
+pgrep -x picom >/dev/null || picom &
 
 # notifications
-pgrep -x dunst > /dev/null || dunst &
+pgrep -x dunst >/dev/null || dunst &
 
 /usr/lib/polkit-kde-authentication-agent-1 &
 
@@ -27,14 +27,16 @@ $BARSENABLE
 ## bspwm config ##
 $BSPCMON
 
-bspc config border_width         2
-bspc config window_gap          10
+bspc config border_width 2
+bspc config window_gap 10
 
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
 
-bspc rule -a Firefox desktop='^2'
+# bspc rule -a Firefox desktop='^2'
+bspc rule -a "matplotlib" state=floating
+bspc rule -a "zathura" state=tiled
 
 bspc monitor -f "^1"
 bspc desktop -f "^1"
