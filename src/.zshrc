@@ -5,6 +5,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+alias float_next="bspc rule -a '*' -o state=floating"
 alias vim=nvim
 export EDITOR=nvim
 export TERMINAL=alacritty
