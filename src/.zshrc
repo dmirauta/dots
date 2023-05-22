@@ -8,6 +8,9 @@ SAVEHIST=10000
 alias vim=nvim
 export EDITOR=nvim
 export TERMINAL=alacritty
+
+# restore ctrl+r back search potentially removed by enabling vim keys
+bindkey '^r' history-incremental-search-backward
 ###
 
 ### (for python) basic conda like global envs with only venv...
