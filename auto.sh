@@ -6,6 +6,7 @@ CONF=$HOME/.config
 VIMCONF=$CONF/nvim/lua/user
 DOTDIRS=(.xinitrc:$HOME/
 	# .zshrc:$HOME/
+	.pylintrc:$HOME/
 	bspwmrc:$CONF/bspwm/
 	sxhkdrc:$CONF/sxhkd/
 	dunstrc:$CONF/dunst/
