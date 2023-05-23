@@ -248,7 +248,8 @@ variable-naming-style=snake_case
 # Regular expression matching correct variable names. Overrides variable-
 # naming-style. If left empty, variable names will be checked with the set
 # naming style.
-#variable-rgx=
+variable-rgx=(?:[A-Z]|[a-z_][a-z0-9_]{0,30})
+argument-rgx=(?:[A-Z]|[a-z_][a-z0-9_]{0,30})
 
 
 [CLASSES]
@@ -430,7 +431,11 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-symbolic-message-instead,
         missing-function-docstring,
-        broad-exception-raised
+        broad-exception-raised,
+        attribute-defined-outside-init,
+        non-ascii-name,
+        bare-except,
+        no-else-return
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
