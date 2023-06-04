@@ -37,7 +37,7 @@ XF86Audio{RaiseVolume,LowerVolume}
 
 # Change audio out
 ctrl + shift + s
-  bash $SCRIPTS/change_sink.sh
+  python $SCRIPTS/change_sink.py
 
 ctrl + shift + b
   bash $SCRIPTS/cheat_sheet.sh
