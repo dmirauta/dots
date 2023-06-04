@@ -16,6 +16,8 @@ pgrep -x dunst >/dev/null || dunst &
 
 /usr/lib/polkit-kde-authentication-agent-1 &
 
+bash $SCRIPTS/check_updates.sh &
+
 $EXTRA_AUTOSTART
 
 # wallpaper # order acording to `xrandr --listmonitors`
