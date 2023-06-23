@@ -40,6 +40,8 @@ bspc config gapless_monocle true
 bspc rule -a "matplotlib" state=floating
 bspc rule -a "Zathura" state=tiled
 
+bspc config external_rules_command "$SCRIPTS/external_bspwm_rules.py"
+
 bspc monitor -f "^1"
 bspc desktop -f "^1"
 xdotool mousemove 100 100
