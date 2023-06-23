@@ -16,6 +16,7 @@ DOTDIRS=(.xinitrc:$HOME/
 	alacritty.yml:$CONF/alacritty/
 	catppuccin-mocha-mod.rasi:$HOME/.local/share/rofi/themes/
 	community.lua:$VIMCONF/plugins/
+	user.lua:$VIMCONF/plugins/
 	options.lua:$VIMCONF/
 )
 
