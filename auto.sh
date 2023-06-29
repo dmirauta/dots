@@ -99,7 +99,7 @@ setup)
 
 	SETUPLSPS=$(printf "Yes\nNo" | rofi -dmenu -p "Setup LSPs?")
 	if [ $SETUPLSPS == "Yes" ]; then
-		$INSTALL_CMD python-lsp-server rustup # might be using pylsp instead which is not the same?
+		$INSTALL_CMD ruff-lsp python-pylint rustup
 		rustup component add rust-analyzer
 	fi
 

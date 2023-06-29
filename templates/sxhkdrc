@@ -2,11 +2,11 @@
 ## wm independent hotkeys ##
 
 # terminal emulator
-super + Return
+super + Tab
 	alacritty
 
 # program launcher
-super + @space
+super + Return
 	rofi -show combi -combi-modes "drun,window,filebrowser" -modes combi -monitor -1 # currently focused monitor
 
 # make sxhkd reload its configuration files
