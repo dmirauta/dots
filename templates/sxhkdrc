@@ -25,15 +25,12 @@ alt + shift + d
 super + l
 	XSECURELOCK_COMPOSITE_OBSCURER=0 xsecurelock
 
-## Function keys ##
+# reset mouse
+ctrl + shift + m
+	xdotool mousemove 50 50
 
-# Media
-XF86Audio{Play,Stop,Prev,Next}
-   playerctl {play-pause,stop,previous,next}
 
-# Change volume
-XF86Audio{RaiseVolume,LowerVolume}
-	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
+## Scripts ##
 
 # Change audio out
 ctrl + shift + s
@@ -42,15 +39,27 @@ ctrl + shift + s
 ctrl + shift + b
   bash $SCRIPTS/cheat_sheet.sh
 
+
+## Function keys ##
+
+# Media
+XF86Audio{Play,Stop,Prev,Next}
+	playerctl {play-pause,stop,previous,next}
+
+# Change volume
+XF86Audio{RaiseVolume,LowerVolume}
+	pactl set-sink-volume @DEFAULT_SINK@ {+5%,-5%}
+
 # Mute
 XF86AudioMute
 	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Screen brightness
 XF86MonBrightness{Down,Up}
-    brightnessctl set {10%-,+10%}
+	brightnessctl set {10%-,+10%}
 
 $EXTRA_KEYDEFS
+
 
 ## bspwm hotkeys ##
 
@@ -69,7 +78,7 @@ super + ctrl + {Left,Right}
 
 # move node to next/prev desktop and follow
 super + ctrl + shift + {Left,Right}
-   bspc node -d {prev,next}.local --follow
+	bspc node -d {prev,next}.local --follow
 
 # focus the next/prev monitor
 super + alt {Left,Right}
@@ -77,7 +86,7 @@ super + alt {Left,Right}
 
 # move node to next/prev monitor and follow
 super + alt + shift {Left,Right}
-   bspc node -m {prev,next} --follow
+	bspc node -m {prev,next} --follow
 
 # expand a window by moving one of its side outward
 super + alt + ctrl + {Left,Down,Up,Right}
