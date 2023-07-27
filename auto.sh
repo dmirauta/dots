@@ -17,6 +17,7 @@ DOTDIRS=(.xinitrc:$HOME/
 	catppuccin-mocha-mod.rasi:$HOME/.local/share/rofi/themes/
 	community.lua:$VIMCONF/plugins/
 	user.lua:$VIMCONF/plugins/
+	clangd.lua:$VIMCONF/lsp/config/
 	options.lua:$VIMCONF/
 )
 
