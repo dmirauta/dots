@@ -17,9 +17,13 @@ super + Escape
 alt + shift + s
 	spectacle --region -b
 
-# delayed screenshot (4 sec)
+# delayed screenshot (2 sec)
 alt + shift + d
-	spectacle --region -b -d 4000
+	spectacle --region -b -d 2000
+
+# ocr
+ctrl + shift + o
+	spectacle -r -b -o /tmp/screenshot.png && tesseract /tmp/screenshot.png stdout --psm 6 | xclip -sel clip | notify-send "OCR" "Scanned text now in clipboard"
 
 # lockscreen
 super + l
