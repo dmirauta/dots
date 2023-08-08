@@ -7,7 +7,7 @@ super + Tab
 
 # program launcher
 super + Return
-	rofi -show combi -combi-modes "drun,window,filebrowser" -modes combi -monitor -1 # currently focused monitor
+	rofi -show combi -combi-modes "drun,window,filebrowser" -modes combi -matching fuzzy -monitor -1 # currently focused monitor
 
 # make sxhkd reload its configuration files
 super + Escape
@@ -43,6 +43,7 @@ ctrl + shift + s
 ctrl + shift + c
   bash $SCRIPTS/cheat_sheet.sh
 
+# Bluetooth quick connect
 ctrl + shift + b
   python $SCRIPTS/connect_bluetooth.py
 
