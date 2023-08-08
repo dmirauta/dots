@@ -8,8 +8,9 @@ SINK_NUMS, SINK_NAMES = zip(*re.findall(PATTERN, SINKS, re.MULTILINE))
 SINK_DICT = dict(zip(SINK_NAMES, SINK_NUMS))
 
 OPTIONS = "\n".join(SINK_NAMES)
-SELECTED = getoutput(f"echo -e \"{OPTIONS}\" | rofi -dmenu -p \"Select audio out\"")
-if SELECTED=='': exit()
+SELECTED = getoutput(f'echo -e "{OPTIONS}" | rofi -dmenu -p "Select audio out"')
+if SELECTED == "":
+    exit()
 print(f"selected {SELECTED}")
 
 SINK_INPUTS = getoutput("pacmd list-sink-inputs | grep index").strip()

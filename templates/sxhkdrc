@@ -40,9 +40,11 @@ ctrl + shift + m
 ctrl + shift + s
   python $SCRIPTS/change_sink.py
 
-ctrl + shift + b
+ctrl + shift + c
   bash $SCRIPTS/cheat_sheet.sh
 
+ctrl + shift + b
+  python $SCRIPTS/connect_bluetooth.py
 
 ## Function keys ##
 
