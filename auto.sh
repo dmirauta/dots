@@ -30,6 +30,14 @@ function foreachdot {
 }
 # foreachdot $'printf "source: %s  target: %s\n" "$sourcefile" "$targetdir"'
 
+function install_nvim {
+	[[ -d ~/.config/nvim ]] && mv -n ~/.config/nvim ~/.config/nvim.bak
+	[[ -d ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
+	[[ -d ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
+	[[ -d ~/.cache/nvim ]] && mv -n ~/.cache/nvim ~/.cache/nvim.bak
+	git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim --depth 1 && nvim
+}
+
 case $1 in
 
 compose)
@@ -64,6 +72,10 @@ monitor = ${DISPLAYS[i]}
 
 	;;
 
+setup-nvim)
+	install_nvim
+	;;
+
 setup)
 	echo "Installing main packages..."
 	$INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar zsh alacritty rofi dunst xsecurelock playerctl spectacle git
@@ -91,16 +103,18 @@ setup)
 
 	INSTNVC=$(printf "Yes\nNo" | rofi -dmenu -p "Install astronvim? (set of neovim plugins)")
 	if [ $INSTNVC == "Yes" ]; then
-		[[ -d ~/.config/nvim ]] && mv -n ~/.config/nvim ~/.config/nvim.bak
-		[[ -d ~/.local/share/nvim ]] && mv -n ~/.local/share/nvim ~/.local/share/nvim.bak
-		[[ -d ~/.local/state/nvim ]] && mv -n ~/.local/state/nvim ~/.local/state/nvim.bak
-		[[ -d ~/.cache/nvim ]] && mv -n ~/.cache/nvim ~/.cache/nvim.bak
-		git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim --depth 1 && nvim
+		install_nvim
 	fi
 
-	SETUPLSPS=$(printf "Yes\nNo" | rofi -dmenu -p "Setup LSPs?")
-	if [ $SETUPLSPS == "Yes" ]; then
-		$INSTALL_CMD ruff-lsp python-pylint rustup
+	SETUPPY=$(printf "Yes\nNo" | rofi -dmenu -p "Setup python LSPs?")
+	if [ $SETUPPY == "Yes" ]; then
+		$INSTALL_CMD ruff-lsp python-pylint
+	fi
+
+	SETUPRUST=$(printf "Yes\nNo" | rofi -dmenu -p "Setup rust?")
+	if [ $SETUPRUST == "Yes" ]; then
+		$INSTALL_CMD rustup
+		rustup install stable
 		rustup component add rust-analyzer
 	fi
 
