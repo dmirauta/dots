@@ -40,7 +40,7 @@ ctrl + shift + m
 ctrl + shift + s
   python $SCRIPTS/change_sink.py
 
-ctrl + shift + c
+alt + shift + c
   bash $SCRIPTS/cheat_sheet.sh
 
 # Bluetooth quick connect
