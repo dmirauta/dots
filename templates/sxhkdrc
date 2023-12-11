@@ -15,11 +15,11 @@ super + Escape
 
 # screenshot
 alt + shift + s
-	spectacle --region -b
+	spectacle --region -b -p
 
 # delayed screenshot (2 sec)
 alt + shift + d
-	spectacle --region -b -d 2000
+	spectacle -b -d -p 2000
 
 # ocr
 ctrl + shift + o
