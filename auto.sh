@@ -13,7 +13,7 @@ DOTDIRS=(.xinitrc:$HOME/
 	rc.conf:$CONF/ranger/
 	config.ini:$CONF/polybar/
 	config.rasi:$CONF/rofi/
-	alacritty.yml:$CONF/alacritty/
+	alacritty.toml:$CONF/alacritty/
 	catppuccin-mocha-mod.rasi:$HOME/.local/share/rofi/themes/
 	community.lua:$VIMCONF/plugins/
 	user.lua:$VIMCONF/plugins/
