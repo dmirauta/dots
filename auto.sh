@@ -78,7 +78,10 @@ setup-nvim)
 
 setup)
 	echo "Installing main packages..."
-	$INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar zsh alacritty rofi dunst xsecurelock playerctl spectacle git
+	$INSTALL_CMD xorg-xinit bspwm sxhkd picom feh polybar zsh alacritty rofi dunst xsecurelock playerctl git
+	;;
+
+setup-secondary)
 	echo "Installing secondary packages..."
 	$INSTALL_CMD ranger ueberzug broot zsh-theme-powerlevel10k
 	echo "Remember to run \"p10k configure\" to customise zsh prompt."
@@ -88,7 +91,7 @@ setup)
 		$INSTALL_CMD $AUDIOLIB
 	fi
 
-	KDE_PACKAGES="qt5ct qt6ct dolphin systemsettings plasma-workspace polkit-kde-agent"
+	KDE_PACKAGES="qt5ct qt6ct spectacle dolphin systemsettings plasma-workspace polkit-kde-agent"
 	INSTKDEDEPS=$(printf "Yes\nNo" | rofi -dmenu -p "Install KDE packages? ($KDE_PACKAGES)")
 	if [ $INSTKDEDEPS == "Yes" ]; then
 		$INSTALL_CMD $KDE_PACKAGES
@@ -151,7 +154,7 @@ restore)
 	;;
 
 *)
-	CMDS=("setup" "set-exec" "us-greek-kbd" "backup" "restore" "compose" "update")
+	CMDS=("setup" "setup-nvim" "setup-secondary" "set-exec" "us-greek-kbd" "backup" "restore" "compose" "update")
 	echo "Usage \"./auto.sh <cmd>\" with command from:"
 	for cmd in ${CMDS[@]}; do
 		echo $'\t' $cmd
